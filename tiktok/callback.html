@@ -1,9 +1,2 @@
 <!doctype html>
-<html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TikTok Authorization — Zodiac Comedy</title></head>
-<body style="font-family:system-ui,sans-serif;max-width:760px;margin:60px auto;padding:0 20px;line-height:1.6">
-<h1>TikTok Authorization</h1>
-<p>This page is the OAuth callback endpoint for Zodiac Comedy Publisher.</p>
-<p>After authorization, the application processes the returned authorization parameters according to the TikTok integration flow.</p>
-<p><a href="../index.html">Back to Zodiac Comedy</a></p>
-</body></html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TikTok Authorization — Zodiac Comedy</title><style>body{font-family:Inter,system-ui,sans-serif;background:#f6f6f8;margin:0}.card{max-width:700px;margin:70px auto;background:white;border:1px solid #ddd;border-radius:18px;padding:30px}.ok{background:#eef9f1;padding:14px;border-radius:10px}.err{background:#fff0f0;padding:14px;border-radius:10px}a{display:inline-block;margin-top:18px;padding:12px 16px;background:#111;color:white;text-decoration:none;border-radius:9px}</style></head><body><div class="card"><h1>TikTok Authorization</h1><div id="result">Checking authorization response…</div><a href="../index.html">Return to Publisher</a></div><script>const p=new URLSearchParams(location.search),code=p.get('code'),state=p.get('state'),err=p.get('error'),expected=sessionStorage.getItem('tt_state');let html;if(err){html='<div class="err"><b>Authorization error</b><br>'+String(p.get('error_description')||err)+'</div>'}else if(code){const stateOK=!expected||state===expected;sessionStorage.setItem('tt_auth_code',code);html='<div class="ok"><b>Authorization code received.</b><br>State validation: '+(stateOK?'PASS':'CHECK REQUIRED')+'<br><small>The authorization code must now be exchanged server-side. Client secrets and access tokens are never stored on this static page.</small></div>'}else{html='<div class="err">No authorization code was returned.</div>'}document.getElementById('result').innerHTML=html;</script></body></html>
